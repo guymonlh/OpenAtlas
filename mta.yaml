@@ -1,0 +1,50 @@
+_schema-version: '2.0'
+ID: OpenAtlas
+version: 0.0.1
+
+modules:
+ - name: core-js
+   type: nodejs
+   path: core-js
+   provides:
+    - name: core-js-service
+      properties:
+        url: "${default-url}"
+   requires:
+    - name: openAtlas-uaa
+    - name: hdi-container
+    - name: core-db
+
+ - name: core-db
+   type: hdb
+   path: core-db
+   requires:
+    - name: hdi-container
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+    - name: CrossSchemaAtlasService
+      group: SERVICE_REPLACEMENTS
+      properties: 
+       key: hdi-atlas-service
+       service: ~{atlas-service-name}
+
+resources:
+ - name: openAtlas-uaa
+   type: com.sap.xs.uaa
+   parameters:
+   config_path: ./xs-security.json 
+
+ - name: hdi-container
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+   parameters:
+   config:
+   schema: openAtlas
+
+ - name: CrossSchemaAtlasService
+   type: org.cloudfoundry.existing-service
+   parameters:
+     service-name: CROSS_SCHEMA_ATLAS
+   properties:
+     atlas-service-name: ${service-name}

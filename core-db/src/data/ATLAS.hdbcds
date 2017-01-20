@@ -1,0 +1,19 @@
+using DATA_DICTIONARY;
+
+context ATLAS {
+	define view DataDictionaryView as SELECT from DATA_DICTIONARY {
+		DATASET_OBJECT_KEY as "DatasetObjectKey",
+		DATASET_LOCATION as "DatasetLocation",
+		DATASET_TECHNICAL_NAME as "DatasetTechnicalName",
+		DATASET_FULL_NAME	as "DatasetFullName",
+		FIELD_SOURCE_OWNER as "FieldSourceOwner",
+		FIELD_SOURCE_NAME as "FieldSourceName",
+		FIELD_SOURCE_FULL_NAME as "FieldSourceFullName",
+		FIELD_NAME as "FieldName",
+		FIELD_LABEL as "FieldLabel",
+		FIELD_TYPE as "FieldType",
+		FIELD_CATEGORY as "FieldCategory",
+		FIELD_DESCRIPTION as "FieldDescription",
+		FIELD_EXAMPLE_DATA as "FieldExampleData"
+	};
+};

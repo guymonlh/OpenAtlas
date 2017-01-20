@@ -1,0 +1,8 @@
+{
+  "DATA_DICTIONARY": {
+    "target": {
+      "object": "V_DATA_DICTIONARY",
+      "schema": "ATLAS"
+    }
+  }
+}

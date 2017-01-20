@@ -1,0 +1,3 @@
+service { 
+"ATLAS.DataDictionaryView" as "DataDictionaries" key ("DatasetFullName","FieldName");
+}
